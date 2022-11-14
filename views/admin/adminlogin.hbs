@@ -1,0 +1,30 @@
+<section class="d-flex justify-content-center align-items-center mt-5">
+    <div class="row container card w-50">
+        <div>
+            <h2 class="text-center">Login</h2>
+        </div>
+        <form action="/admin/adminlogin" method="post">
+           {{#if loginerr}}
+           <p style="color:red ;" class="err">{{loginerr}}</p>
+           {{/if}}
+     
+            <div class="mb-3 row">
+                <label for="" class="col-sm-2 col-form-label">userId</label>
+                <div class="col-sm-10">
+                    <input type="text" name="adminId" class="form-control" id="adminId">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" name="password" class="form-control" id="inputPassword">
+                </div>
+            </div>
+            <div>
+                
+                <button style="margin-left:540px; " type="submit" class="btn btn-primary  ">Login</button>
+            </div>
+        </form>
+    </div>
+
+</section>
