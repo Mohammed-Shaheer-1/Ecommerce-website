@@ -1,4 +1,4 @@
-<section class="d-flex justify-content-center align-items-center mt-5">
+{{!-- <section class="d-flex justify-content-center align-items-center mt-5 mb-5">
     <div class="row container card w-50">
         <div>
             <h2 class="text-center">Login</h2>
@@ -27,4 +27,40 @@
         </form>
     </div>
 
+</section> --}}
+
+
+<section class="container w-50  p-3" style="margin-top:50px ; background-color: rgba(240, 248, 255, 0.61); display: flex; justify-content: center; align-items: center; ">
+   
+    <form  action="/admin/adminlogin" method="post" class="">
+    <div class="text-center mb-3">
+          <h3 style="    font-family: Cabin, sans-serif; font-weight: 700; ">Login</h3>
+    </div>
+   
+      {{#if loginerr}}
+           <p style="color:red ;" class="err">{{loginerr}}</p>
+           {{/if}}
+        <!-- Email input -->
+        <div class="form-outline mb-2 " style="width: 300px;">
+            <input type="text" id="form2Example1" name="adminId" id="email" class="form-control" required="" />
+            <label class="form-label" for="form2Example1">userId</label>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-2 w-100">
+            <input type="password" id="form2Example2" name="password" class="form-control" required="" />
+            <label class="form-label" for="form2Example2">Password</label>
+        </div>
+
+        <!-- 2 column grid layout for inline styling -->
+     
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-outline-primary btn-block mb-2 ">Login</button>
+
+        <!-- Register buttons -->
+
+       
+
+    </form>
 </section>

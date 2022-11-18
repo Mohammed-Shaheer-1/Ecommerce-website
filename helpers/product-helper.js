@@ -2,6 +2,7 @@ var db=require('../confiq/connection')
 var collections=require('../confiq/collections')
 const bcrypt = require('bcrypt')
 const promise = require('promise')
+const { response } = require('express')
 var objctId=require('mongodb').ObjectId
 module.exports = {
 
@@ -58,5 +59,28 @@ module.exports = {
         })
   
 
+},
+getOrderList:()=>{
+    return new promise((resolve,rejuct)=>{
+     let order=db.get().collection(collections.order_collection).find().toArray()
+ resolve(order)
+ 
+ 
+    })
+
+},
+changeStatus:(orderId)=>{
+  return new promise((resolve,rejuct)=>{
+    db.get().collection(collections.order_collection).updateOne({_id:objctId(orderId),status:'placed'},
+         {
+            $set:{
+                status:'shipped'
+            }
+         }
+    ).then((response)=>{
+        resolve()
+    })
+  })
 }
+
 }

@@ -1,38 +1,45 @@
-<div >
-<table class="mt-5 table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Date</th>
-      <th scope="col">Address</th>
-      <th scope="col">Pin Code</th>
-      <th scope="col">Phon number</th>
-      <th scope="col">Amount</th>
-       <th scope="col">Payment</th>
-        <th scope="col">status</th>
+<div class="bg-light " style="width: 100%; height: 100%;">
+
+  <table class="table table-striped" style="position:relative ; top: 130px;" id="orderTable">
+    <thead>
+      <tr>
+
+        <th scope="col" style="color: rgb(41, 158, 204);">Date</th>
+        <th scope="col" style="color: rgb(41, 158, 204);">Address</th>
+        <th scope="col" style="color: rgb(41, 158, 204);">Pin Code</th>
+        <th scope="col" style="color: rgb(41, 158, 204);">Phone number</th>
+        <th scope="col" style="color: rgb(41, 158, 204);">Amount</th>
+        <th scope="col" style="color: rgb(41, 158, 204);">Payment</th>
+        <th scope="col" style="color: rgb(41, 158, 204);">status</th>
+        <th scope="col" style="color: rgb(41, 158, 204);">show</th>
 
 
-      
-   
-    </tr>
-  </thead>
-  <tbody>
-    {{#each showOrder}}
-    <tr>
-      <th scope="row">1</th>
-      <td>{{this.deliveryDetails.date}}</td>
-      <td>{{this.deliveryDetails.address}}</td>
-      <td>{{this.deliveryDetails.pincode}}</td>
-      <td>{{this.deliveryDetails.mobile}}</td>
-      <td>{{this.totalAmount}}</td>
-      <td>{{this.paymentMethod}}</td>
-      <td>{{this.status}}</td>
-      <td></td>
-      <td>  <a href="/show-order-products/{{this._id}}" class="btn btn-success">Show Product</a></td>
-    
-    </tr>
-    {{/each}}
+      </tr>
+    </thead>
+    <tbody style="background-color:rgba(127, 189, 218, 0.322) ;">
+      {{#each showOrder}}
+      <tr>
 
-  </tbody>
-</table>
+        <td>{{this.deliveryDetails.date}}</td>
+        <td>{{this.deliveryDetails.address}}</td>
+        <td>{{this.deliveryDetails.pincode}}</td>
+        <td>{{this.deliveryDetails.mobile}}</td>
+        <td>{{this.totalAmount}}</td>
+        <td>{{this.paymentMethod}}</td>
+        <td style="color:orangered">{{this.status}}</td>
+
+        <td> <a href="/show-order-products/{{this._id}}" class="btn btn-outline-success">Show Product</a></td>
+
+      </tr>
+      {{/each}}
+
+    </tbody>
+  </table>
 </div>
+<script>
+  <script>
+    $(document).ready( function () {
+      $('#orderTable').DataTable();
+} );
+</script>
+</script>

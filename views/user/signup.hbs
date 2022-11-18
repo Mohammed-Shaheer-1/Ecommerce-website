@@ -1,4 +1,4 @@
-<section class="d-flex justify-content-center align-items-center mt-5">
+{{!-- <section class="d-flex justify-content-center align-items-center mt-5">
     <div class="row container card w-50">
         <div>
             <h2 class="text-center">Signup</h2>
@@ -31,4 +31,42 @@
             </div>
         </form>
     </div>
+</section> --}}
+
+
+
+<section class="container w-50  p-3" style="margin-top:130px ; background-color: rgba(240, 248, 255, 0.61); display: flex; justify-content: center; align-items: center; ">
+   
+    <form action="/signup" method="post" class="">
+    <div class="text-center mb-3">
+          <h3 style="    font-family: Cabin, sans-serif; font-weight: 700; ">SignUp</h3>
+    </div>
+                <div class="form-outline mb-2 " style="width: 300px;">
+            <input type="text" id="name" name="name"  class="form-control" required="" />
+            <label class="form-label" for="form2Example1">Enter your name</label>
+        </div>
+    
+        <!-- Email input -->
+        <div class="form-outline mb-2 " style="width: 300px;">
+            <input type="email" id="form2Example1" name="email" id="email" class="form-control" required="" />
+            <label class="form-label" for="form2Example1">Email address</label>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-2 w-100">
+            <input type="password" id="password" name="password" class="form-control" required="" />
+            <label class="form-label" for="form2Example2">Password</label>
+        </div>
+
+        <!-- 2 column grid layout for inline styling -->
+     
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-outline-primary btn-block mb-2 ">Sign in</button>
+
+        <!-- Register buttons -->
+
+              <a href="/login"><label for="" class="ms-2 text-primary">Allredy have a account?</label></a>
+
+    </form>
 </section>

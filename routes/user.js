@@ -94,6 +94,7 @@ router.get('/cart',loggedin,async(req,res)=>{
 
 router.get('/add-to-cart/:id',(req,res)=>{
 console.log("hi api");
+console.log(req.params.id);
    userhelpers.addToCart(req.params.id,req.session.user._id).then((resp)=>{
  
     res.json({status:true})

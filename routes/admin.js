@@ -23,12 +23,12 @@ var loggedinn=(req,res,next)=>{
 
 router.get('/',loggedinn,async function  (req, res, next) {
  await producthelpers.getAllproducts().then((products)=>{
-    res.render('admin/view-products', { admin: true, products });
+    res.render('admin/view-products', { admin: true, products ,ad:req.session.admin});
   })
  
 });
 router.get('/add-product', (req, res) => {
-  res.render('admin/add-product')
+  res.render('admin/add-product',{admin: true,ad:req.session.admin})
 })
 
 router.post('/add-product', (req, res) => {
@@ -39,7 +39,7 @@ router.post('/add-product', (req, res) => {
     console.log(id);
     image.mv('./public/product-imges/'+id+'.jpg',(err,data)=>{
     if(!err){
-      res.render('admin/add-product')
+      res.render('admin/add-product',{admin: true})
     }else{
       console.log(err);
     }
@@ -73,7 +73,7 @@ router.get('/edit-product/:id', (req, res) => {
   let product=req.params.id
   db.get().collection(collections.product_collction).findOne({_id:objctId(product)}).then((product)=>{
    
-    res.render('admin/edit-product',{product})
+    res.render('admin/edit-product',{product,admin: true,ad:req.session.admin})
   })
 })
 
@@ -114,16 +114,36 @@ router.post('/adminlogin', (req, res) => {
     
       req.session.admin = result.data
       req.session.admin.loggedin = true
-      res.redirect('/admin')
+      res.redirect('/admin/')
    
     } else {
-      
+    //  let ad=req.session.admin=null
       req.session.adminloginErr="Invalid adminId Or password"
-      res.render('admin/adminlogin',{"loginerr":req.session.adminloginErr,admin:true})
+      res.render('admin/adminlogin',{"loginerr":req.session.adminloginErr,ad:req.session.admin,admin:true})
     }
   })
 });
 
+
+router.get('/orders',(req,res)=>{
+ producthelpers.getOrderList().then((order)=>{
+
+  let newArry=order.filter((value)=>value.status=='placed')
+
+  res.render('admin/order',{admin:true,ad:req.session.admin,newArry})
+ })
+})
+
+
+router.get('/order/:id',async(req,res)=>{
+console.log("hello");
+
+ await producthelpers.changeStatus(req.params.id).then(()=>{
+
+ res.redirect('/admin/orders')
+})
+
+})
 
 
 module.exports = router;

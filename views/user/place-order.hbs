@@ -1,4 +1,4 @@
-<section>
+{{!-- <section>
     <div class="container ">
         <h1 class="mt-4">Enter Delivery Details</h1>
 
@@ -60,7 +60,71 @@
         </form>
 
     </div>
+</section> --}}
+<section class="bg-light  " style="position: relative; bottom:13px;" >
+
+<div class="container-fluid mt-5 px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+
+            <div class="card">
+                <h5 class="text-center mb-4">Enter Delivery Details</h5>
+                <form action="" id="checkout-form" class="form-card" >
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">First name<span class="text-danger"> *</span></label> <input type="text" id="fname" name="fname" placeholder="Enter your first name"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Last name<span class="text-danger"> *</span></label> <input type="text" id="lname" name="lname" placeholder="Enter your last name" > </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3"> Pincode<span class="text-danger"> *</span></label> <input type="number" id="pincode" name="pincode" placeholder="" > </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Phone number<span class="text-danger"> *</span></label> <input type="number" id="mobile" name="mobile" placeholder="" > </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Address<span class="text-danger"> *</span></label> <input type="text" id="address" name="address" placeholder=""> </div>
+                         <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Date<span class="text-danger"> *</span></label> <input type="date" id="date" name="date" placeholder=""> </div>
+                    </div>
+    
+                     <input type="text" name="userId" value="{{user._id}}" id="" hidden>
+                            <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Amount: Rs: <span style="color: red;">{{total}}</span>
+                                </h5>
+                                <hr>
+                                <h6>Payment method</h6>
+                                <div class="form-check">
+                                    <input class="form-check-input bg-success " style="position: relative; left:150px ;" type="radio" name="payment-method" value="COD"
+                                        checked required="">
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        COD
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input bg-success " style="position: relative; left:146px ;" type="radio" name="payment-method" value="online"
+                                        required="">
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        Online payment
+                                    </label>
+
+                                </div>
+                                <button type="submit" class="mt-2 btn btn-success">Check out</button>
+
+                            </div>
+                        </div>
+                    {{!-- <div class="row justify-content-end">
+                        <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">Request a demo</button> </div>
+                    </div> --}}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </section>
+<style>
+    body{color: #000;overflow-x: hidden;height: 100%;background-image: url("images/gm.png");background-repeat: no-repeat;background-size: 100% 100%}.card{padding: 30px 40px;margin-top: 60px;margin-bottom: 60px;border: none !important;box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2)}.blue-text{color: #00BCD4}.form-control-label{margin-bottom: 0}input, textarea, button{padding: 8px 15px;border-radius: 5px !important;margin: 5px 0px;box-sizing: border-box;border: 1px solid #ccc;font-size: 18px !important;font-weight: 300}input:focus, textarea:focus{-moz-box-shadow: none !important;-webkit-box-shadow: none !important;box-shadow: none !important;border: 1px solid #00BCD4;outline-width: 0;font-weight: 400}.btn-block{text-transform: uppercase;font-size: 15px !important;font-weight: 400;height: 43px;cursor: pointer}.btn-block:hover{color: #fff !important}button:focus{-moz-box-shadow: none !important;-webkit-box-shadow: none !important;box-shadow: none !important;outline-width: 0}
+    section{
+     
+      background-image:  url("images/gm.png");background-repeat: no-repeat;background-size: 100% 100%}
+    
+</style>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
     $("#checkout-form").submit((e) => {

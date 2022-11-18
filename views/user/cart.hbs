@@ -1,90 +1,99 @@
-<section>
-    <div class="container">
-        
-        <table class="table mt-5">
-         
+<section style="height: 100%; width: 100%;  background-color: #fff; ">
+    <div class=" container "  style="position: relative; top: 140px;">
+          <div class="bg-light text-center">
+        <h3 class=" mt-4 text-dark">Total: Rs - <span style="color: red;" id="total">{{totalValue}}</span></h3>
+        <a href="/place-order" class="btn btn-primary mt-2">Place order</a>
+    </div>
+
+        <table class="table table-light table-hover  " id="table">
+
             <thead>
                 <tr>
-                       
+
                     <th class="col">Item</th>
                     <th class="col">Titile</th>
                     <th class="col">Price</th>
                     <th class="col">Quantity</th>
+                    <th class="col">Delete</th>
 
-                </tr>   
+                </tr>
             </thead>
             <tbody>
                 {{#each products}}
                 <tr>
-               
-                   <td><img style="width:70px ; height:70px;" src="/product-imges/{{this.product._id}}.jpg"  alt="image err"></td> 
-                   <td>{{this.product.name}}</td>
-                   <td>₹{{this.product.price}}</td>
-                  
-                   <td>
-                    <button class="cart-items-count mr-3" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)">-</button> <span id="{{this.product._id}}">{{this.quantity}}</span><button class="cart-items-count mr-3" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)">+</button>
-                   </td>
-                   <td>
-                      {{!-- <a href="" class="btn btn-danger">Remove</a>  --}}
-                      <button  class="btn btn-danger" onclick="removeCart('{{this._id}}','{{this.product._id}}')">Remove</button>
-                   </td>
-                   {{/each}}
+
+                    <td><img style="width:70px ; height:70px;" src="/product-imges/{{this.product._id}}.jpg"
+                            alt="image err"></td>
+                    <td>{{this.product.name}}</td>
+                    <td>₹{{this.product.price}}</td>
+
+                    <td>
+                        <button class="cart-items-count btn btn-outline-primary  mr-3"
+                            onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)">-</button>
+                        <span id="{{this.product._id}}" class="" style="font-weight: 700; color:orangered">{{this.quantity}}</span><button class="cart-items-count ms-1 mr-3 btn btn-outline-primary " 
+                            onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)">+</button>
+                    </td>
+                    <td>
+                        {{!-- <a href="" class="btn btn-danger">Remove</a> --}}
+                        <button  class="btn btn-outline-danger "
+                            onclick="removeCart('{{this._id}}','{{this.product._id}}')">Remove</button>
+                    </td>
+                    {{/each}}
 
                 </tr>
             </tbody>
         </table>
     </div>
-    <hr>
-    <div class="float-center ms-5">
-        <h3 class=" mt-4">Total: Rs <span style="color: red;" id="total">{{totalValue}}</span></h3>
-        <a href="/place-order" class="btn btn-success mt-2">Place order</a>
-    </div>
+
+
 
 </section>
 
 <script>
-    function changeQuantity(cartId,proId,userId,count){
-        let quantity=parseInt(document.getElementById(proId).innerHTML)
-  
+    function changeQuantity(cartId, proId, userId, count) {
+        let quantity = parseInt(document.getElementById(proId).innerHTML)
+
         $.ajax({
-            url:'/change-product-quantity',
-            data:{
-              userId:userId,  
-              cart:cartId,
-              product:proId,
-              count:count,
-              quantity:quantity
+            url: '/change-product-quantity',
+            data: {
+                userId: userId,
+                cart: cartId,
+                product: proId,
+                count: count,
+                quantity: quantity
             },
-            method:'post',
-            success:(response)=>{
-             if(response.removeProduct){
-                alert('Product Removed from Cart')
-                location.reload()
-             }else{
-                console.log(response)
-                document.getElementById(proId).innerHTML=quantity+count
-                document.getElementById('total').innerHTML=response.totalValue
-             }
-            } 
+            method: 'post',
+            success: (response) => {
+                if (response.removeProduct) {
+                    alert('Product Removed from Cart')
+                    location.reload()
+                } else {
+                    console.log(response)
+                    document.getElementById(proId).innerHTML = quantity + count
+                    document.getElementById('total').innerHTML = response.totalValue
+                }
+            }
         })
     }
 
-    function removeCart(cartId,proId){
-          $.ajax({
-            url:'/remove-cart',
-            data:{
-                cartId:cartId,
-                proId:proId
+    function removeCart(cartId, proId) {
+        $.ajax({
+            url: '/remove-cart',
+            data: {
+                cartId: cartId,
+                proId: proId
             },
-            method:'post',
-            success:(response)=>{
+            method: 'post',
+            success: (response) => {
                 console.log(response)
-                if(response.status){
-                 alert("are you want  to delete?")
-                location.reload()
+                if (response.status) {
+                    alert("are you want  to delete?")
+                    location.reload()
                 }
-              
+
             }
-          })
+        })
     }
+
+
 </script>

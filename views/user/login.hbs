@@ -1,13 +1,13 @@
-<section class="d-flex justify-content-center align-items-center mt-5">
+{{!-- <section class="d-flex justify-content-center align-items-center mt-5">
     <div class="row container card w-50">
         <div>
             <h2 class="text-center">Login</h2>
         </div>
         <form action="/login" method="post">
-           {{#if loginErr}}
-           <p style="color:red ;" class="err">{{loginErr}}</p>
-           {{/if}}
-     
+            {{#if loginErr}}
+            <p style="color:red ;" class="err">{{loginErr}}</p>
+            {{/if}}
+
             <div class="mb-3 row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">
@@ -27,4 +27,39 @@
         </form>
     </div>
 
+</section> --}}
+
+<section class="container w-50  p-3" style="margin-top:150px ; background-color: rgba(240, 248, 255, 0.61); display: flex; justify-content: center; align-items: center; ">
+   
+    <form action="/login" method="post" class="">
+    <div class="text-center mb-3">
+          <h3 style="    font-family: Cabin, sans-serif; font-weight: 700; ">Login</h3>
+    </div>
+   
+        {{#if loginErr}}
+        <p style="color:red ;" class="err">{{loginErr}}</p>
+        {{/if}}
+        <!-- Email input -->
+        <div class="form-outline mb-2 " style="width: 300px;">
+            <input type="email" id="form2Example1" name="email" id="email" class="form-control" required="" />
+            <label class="form-label" for="form2Example1">Email address</label>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-2 w-100">
+            <input type="password" id="form2Example2" name="password" class="form-control" required="" />
+            <label class="form-label" for="form2Example2">Password</label>
+        </div>
+
+        <!-- 2 column grid layout for inline styling -->
+     
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-outline-primary btn-block mb-2 ">Sign in</button>
+
+        <!-- Register buttons -->
+
+        <p>Not a member? <a href="/signup">Register</a></p>
+
+    </form>
 </section>

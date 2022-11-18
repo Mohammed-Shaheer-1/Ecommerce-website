@@ -1,0 +1,30 @@
+<table class="table table-primary table-striped table-hover container mt-5 " >
+  <thead>
+    <tr>
+      <th scope="col">Address</th>
+      <th scope="col">Date</th>
+      <th scope="col">Totel Amount</th>
+      <th scope="col">Payment Method</th>
+      <th scope="col">status</th>
+      <th>_</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each newArry}}
+    <tr>
+     <td>{{this.deliveryDetails.address}}</td>
+      <td>{{this.deliveryDetails.date}}</td>
+      <td>{{this.totalAmount}}</td>
+      <td>{{this.paymentMethod}}</td>
+        <td style="color: rgb(248, 8, 8); font-weight: bolder;">{{this.status}}</td>
+        <td>
+            {{!-- <button class="btn btn-outline-warning" onclick="changeStatus('{{this._id}}')"  >changStatus</button></td> --}}
+         <a class="btn btn-primary" href="/admin/order/{{this._id}}">shipped</a></td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
+{{!-- onclick="changeStatus('{{this._id}}')" --}}
+<script>
+
+</script>

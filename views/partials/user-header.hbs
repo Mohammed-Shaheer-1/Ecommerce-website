@@ -1,50 +1,289 @@
 <header>
-    <nav class="navbar navbar-expand-lg bg-light ">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Shopping Cart</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Products</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/cart">Cart <span class="badge text-bg-success" id="cart-count">{{cartCount}}</span></a>
-                    </li>
+  <section>
 
-                  {{#if user}}
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/show-order">Orders</a>
-                    </li>
-                  {{/if}}
-                </ul>
-                <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    {{#if user}}
-    {{user.name}}
-    {{else}}
-    Account
-    {{/if}}
-
-  </button>
-  <ul class="dropdown-menu">
-    <li>
-    {{#if user}}
-     <a class="dropdown-item" href="/logout">Logout</a>
-    {{else}}
-  <a class="dropdown-item" href="/login">Login</a>
-    {{/if}}
-
-        </li>
-
-  </ul>
-</div>
-    
-            </div>
+    <div class="fixed-top">
+      <div class="nav_bar fixed-top ">
+        <div class="navbar_first">
+          <div class="top_bar_text  ">FREE SHIPPING WORLDWIDE</div>
         </div>
-    </nav>
+      </div>
+
+      <div class="nav_second nav   ">
+
+        <a href="#" aria-current="page">
+          <div class="header container "> SHOE.FACTORY </div>
+        </a>
+
+        <div class="nav_links    ">
+          <ul class="nav ms-5  justify-content-center ">
+
+            <li class="nav_item">
+              <a class=" nav-link link" href="#">SHOP</a>
+            </li>
+
+            <li class="nav_item">
+              <a class="nav-link " href="#">SHIPPING & RETURNS</a>
+            </li>
+            <li class="nav_item">
+              <a class="nav-link" href="/cart">CART<span style="" class="badge bg-danger"
+                  id="cart-count">{{cartCount}}</span></a>
+            </li>
+            <li class="nav_item">
+              <a class="nav-link " aria-current="page" href="#">BLOG</a>
+            </li>
+            <li class="nav_item">
+              <a class="nav-link " aria-current="page" href="#">ABOUT</a>
+            </li>
+
+            {{#if user}}
+            <li class="nav_item">
+              <a class="nav-link " aria-current="page" href="/show-order">Orders</a>
+            </li>
+            {{/if}}
+          </ul>
+        </div>
+
+        <div class="d-flex " id="account">
+          <div class="icon_menu ">
+            <div>
+              <i class="icon bi bi-list"></i>
+              <a id="menu" class="" href="#">MENU</a>
+
+            </div>
+          </div>
+          <!-- Example single danger button -->
+          <div class="btn-group    ">
+            <button type="button" class="btn dropdown-toggle bg-light mt-2 h-50 pb-4 ms-3 " data-bs-toggle="dropdown" aria-expanded="false">
+              {{#if user}}
+              {{user.name}}
+              {{else}}
+              Account
+              {{/if}}
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                {{#if user}}
+                <a class="dropdown-item" href="/logout">Logout</a>
+                {{else}}
+                <a class="dropdown-item" href="/login">Login</a>
+                {{/if}}
+              </li>
+            </ul>
+          </div>
+
+          {{!-- <div class="dropdown ms-5  mt-3"> --}}
+            {{!-- <button class="bot btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              {{#if user}}
+              {{user.name}}
+              {{else}}
+              Account
+              {{/if}}
+
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                {{#if user}}
+                <a class="dropdown-item" href="/logout">Logout</a>
+                {{else}}
+                <a class="dropdown-item" href="/login">Login</a>
+                {{/if}}
+
+              </li>
+
+            </ul>
+          </div> --}}
+
+        </div>
+      </div>
+
+    </div>
+
+    </div>
+
+
+    {{!-- <div>
+      <img src="/shoue.jpeg" alt="">
+    </div> --}}
+    </div>
+
+
+  </section>
+
+
 </header>
+<script>
+  const navEl = document.querySelector(".nav")
+  window.addEventListener('scroll', () => {
+    if (window.scrollY >= 50) {
+      navEl.classList.add('navbar-scrolled')
+    } else if (window.scrollY < 50) {
+      navEl.classList.remove('navbar-scrolled')
+    }
+  })
+
+</script>
+<style>
+  .navbar-scrolled {
+    background-color: #fff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+
+
+  }
+
+  .nav {
+    transition: all 0.5s;
+  }
+
+  .nav_bar {
+    position: sticky;
+
+    z-index: 100;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 25%, transparent);
+  }
+
+  .navbar_first {
+    position: sticky;
+    width: 100%;
+    background-color: #4ca2ac;
+    height: 35px;
+  }
+
+  #account {
+    position: relative;
+    left: 30px;
+  }
+
+  .top_bar_text {
+    font-family: Cabin, sans-serif;
+    letter-spacing: 3px;
+    font-weight: 500;
+    color: #fff;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    padding: 14px 16px;
+  }
+
+  .nav_second {
+    display: flex;
+
+  }
+
+  .bot {
+    font-family: Cabin, sans-serif;
+    letter-spacing: 3px;
+    font-weight: 500;
+    color: #000;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+  }
+
+
+
+  a:link {
+    text-decoration: none;
+
+    letter-spacing: 2px;
+    font-family: Exo, sans-serif;
+    font-weight: 500;
+
+
+  }
+
+  .header {
+    font-size: 18px;
+    line-height: 77px;
+    color: #000;
+    cursor: pointer;
+    /* margin-top: 20px; */
+  }
+
+  .space {
+    width: 55px;
+    background-color: #263536;
+  }
+
+  .nav_links {
+
+    font-size: 11px;
+    font-weight: bolder;
+    position: relative;
+    left: 0px;
+
+
+
+  }
+
+
+  .nav_item {
+    display: flex;
+    align-items: center;
+
+  }
+
+  .nav-link {
+    color: black;
+    position: relative;
+    margin-top: 21px;
+    cursor: pointer;
+  }
+
+  li {}
+
+  .icon_menu {
+    position: relative;
+    top: 22px;
+  }
+
+  .icon {
+    color: #000;
+
+    cursor: pointer;
+
+  }
+
+  #menu {
+    font-size: 11px;
+    margin-left: 8px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    line-height: 27px;
+    cursor: pointer;
+    color: #000;
+    font-family: Cabin, sans-serif;
+
+  }
+
+  .a_cart {
+    display: flex;
+    margin-top: 22px;
+    margin-left: 50px;
+
+  }
+
+  .cart {
+    margin-left: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    margin-top: 5px;
+    font-family: Cabin, sans-serif;
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .cart_icon {
+    color: #fff;
+  }
+
+  .num {
+    line-height: 27px;
+    margin-left: 4px;
+    font-size: 14px;
+    font-weight: 1000;
+    color: orangered;
+
+  }
+</style>
